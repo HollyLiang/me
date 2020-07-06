@@ -1,0 +1,17 @@
+:host {
+  .development-section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    div {
+      padding: 16px;
+      border-radius: 4px;
+      border: 1px solid silver;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #eeeeee;
+      }
+    }
+  }
+}

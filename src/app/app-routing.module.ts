@@ -1,3 +1,4 @@
+import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -8,8 +9,16 @@ const routes: Routes = [
   {
     path: '', component: LayoutComponent,
     children: [
-      { path: '', component: HomePage }
+      { path: '', component: HomePage },
+      {
+        path: 'research',
+        loadChildren: () => import('./routes/research/research.module').then(m => m.ResearchModule)
+      }
     ]
+  },
+  {
+    path: 'root', outlet: 'dialog',
+    loadChildren: () => import('./routes/research/research.module').then(m => m.ResearchModule)
   }
 ];
 
