@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatModule } from './shared/mat.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,14 +17,12 @@ const alainConfig: AlainConfig = {
 
 import { LayoutComponent } from './layout/layout.component';
 import { HomePage } from './routes/home/home';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    HomePage
+    HomePage,
   ],
   imports: [
     BrowserModule,

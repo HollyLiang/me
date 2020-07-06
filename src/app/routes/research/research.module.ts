@@ -5,22 +5,16 @@ import { MatModule } from 'src/app/shared/mat.module';
 
 import { DialogComponent } from './dialog/dialog.component';
 import { RouterOutletComponent } from './dialog/router-outlet/router-outlet.component';
-import { Page1Component } from './dialog/page1/page1.component';
-
 
 @NgModule({
   declarations: [
     DialogComponent,
-    RouterOutletComponent,
-    Page1Component
+    RouterOutletComponent
   ],
   imports: [
     CommonModule,
     ResearchRoutingModule,
     MatModule,
-  ],
-  entryComponents: [
-    RouterOutletComponent
   ]
 })
 export class ResearchModule { }
