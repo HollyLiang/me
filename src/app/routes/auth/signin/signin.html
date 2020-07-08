@@ -1,0 +1,43 @@
+<div class="bg-blur"></div>
+<div class="bg-cover"></div>
+<div class="container">
+  <form [formGroup]="signInForm" (ngSubmit)="onFormSubmit()" #form="ngForm"
+    class="singin-container">
+    <h1 class="singin-header">Welcome</h1>
+
+    <section>
+      <mat-form-field class="col-12">
+        <mat-label>Account</mat-label>
+        <input matInput required formControlName="account">
+        <mat-error *ngIf="signInForm.controls.account.hasError('required')">
+          <strong>Required</strong>
+        </mat-error>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field class="col-12">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" required formControlName="password">
+        <mat-error *ngIf="signInForm.controls.password.hasError('required')">
+          <strong>Required</strong>
+        </mat-error>
+      </mat-form-field>
+    </section>
+
+    <section class="col-12">
+      <mat-slide-toggle class="example-margin" color="primary" formControlName="rememberMe">
+        Remember me
+      </mat-slide-toggle>
+    </section>
+
+    <section class="col-12">
+      <mat-error *ngIf="errorMsg">
+        <strong>Account or Password incorrected</strong>
+      </mat-error>
+    </section>
+
+    <section class="col-10 offset-1" style="margin-top: 16px">
+      <button mat-raised-button color="primary" class="col-12">Sign In</button>
+    </section>
+  </form>
+</div>
