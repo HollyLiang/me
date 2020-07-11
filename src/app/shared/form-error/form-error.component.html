@@ -1,0 +1,8 @@
+<ng-container *ngIf="control.touched && control.errors">
+    <span *ngIf="control.hasError('required')">{{ requiredText }}</span>
+    <span *ngIf="control.hasError('email')">{{ formatIncorrectText }}</span>
+    <span *ngIf="control.hasError('maxlength')">{{ maxlengthText }}</span>
+    <span *ngIf="control.hasError('min')">{{ rangeText }}</span>
+    <span *ngIf="control.hasError('max')">{{ rangeText }}</span>
+    <ng-content></ng-content>
+</ng-container>

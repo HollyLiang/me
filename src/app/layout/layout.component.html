@@ -2,7 +2,7 @@
   <mat-toolbar-row>
     <a routerLink="/" class="brand">Research Space</a>
     <span class="example-spacer"></span>
-    <button mat-button routerLink="/auth/signIn">Sign In</button>
+    <ng-container *ngTemplateOutlet="signInButtonTemplate"></ng-container>
     <!-- <button mat-icon-button class="example-icon favorite-icon"
       aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
@@ -14,3 +14,12 @@
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+
+<ng-template #signInButtonTemplate>
+  <ng-container *ngIf="isSignIn; else elseTemplate">
+    <button mat-button (click)="onSignOutClick()">Sign Out</button>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <button mat-button routerLink="/auth/signIn">Sign In</button>
+  </ng-template>
+</ng-template>

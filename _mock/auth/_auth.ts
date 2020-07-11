@@ -11,14 +11,19 @@ export class AuthMock {
         body: {
           account: account
         },
-        headers: new HttpHeaders({ 'set-token': 'token' })
+        headers: new HttpHeaders({ 'set-access-token': 'token' })
       });
     } else {
       throw new MockStatusError(400);
     }
   }
+
+  public static signOut(req: MockRequest) {
+    return {};
+  }
 }
 
 export const AUTH = {
   'POST ~/api/auth/signIn': (req: MockRequest) => AuthMock.signIn(req),
+  'POST ~/api/auth/signOut': (req: MockRequest) => AuthMock.signOut(req),
 };

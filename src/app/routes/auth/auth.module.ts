@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { MatModule } from 'src/app/shared/mat.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { SignInPage } from './signin/signin';
 
@@ -14,7 +14,7 @@ import { SignInPage } from './signin/signin';
     FormsModule,
     ReactiveFormsModule,
     AuthRoutingModule,
-    MatModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

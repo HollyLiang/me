@@ -19,23 +19,9 @@
       "dom"
     ],
     "paths": {
-      "@api":[
-        "src/app/api"
-      ],
-      "@api/*":[
-        "src/app/api/*"
-      ],
-      "@model":[
-        "src/app/model"
-      ],
-      "@model/*":[
-        "src/app/model/*"
-      ],
-      "@core":[
-        "projects/hy-core/src"
-      ],
-      "@core/*":[
-        "projects/hy-core/src/*"
+      "hy-core": [
+        "dist/hy-core/hy-core",
+        "dist/hy-core"
       ]
     }
   },

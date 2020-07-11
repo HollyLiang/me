@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthAPIService } from '@api/auth/auth.service';
+import { UserService } from '@core/storage';
 
 @Component({
   selector: 'app-auth-signin',
@@ -17,12 +18,20 @@ export class SignInPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private userService: UserService,
     private authAPI: AuthAPIService
   ) {
+
+    let account = '';
+    const remember = this.userService.rememberMe;
+    if (remember) {
+      account = this.userService.account;
+    }
+
     this.signInForm = this.fb.group({
-      account: ['', [Validators.required]],
+      account: [account, [Validators.required]],
       password: ['', [Validators.required]],
-      rememberMe: [false]
+      rememberMe: [this.userService.rememberMe]
     });
   }
 
@@ -31,7 +40,14 @@ export class SignInPage implements OnInit {
 
   onFormSubmit() {
     if (this.signInForm.valid) {
-      this.authAPI.signIn(this.signInForm.value.account, this.signInForm.value.password).subscribe(res => {
+      const formValue = this.signInForm.value;
+      const remember: boolean = this.signInForm.value.rememberMe;
+      this.userService.rememberMe = remember;
+      this.userService.account = remember ? formValue.account : '';
+
+      this.errorMsg = '';
+
+      this.authAPI.signIn(formValue.account, formValue.password).subscribe(res => {
         this.router.navigate(['/']);
       }, error => {
         this.errorMsg = 'AccountOrPasswordError';

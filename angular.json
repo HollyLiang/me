@@ -114,6 +114,46 @@
           }
         }
       }
+    },
+    "hy-core": {
+      "projectType": "library",
+      "root": "projects/hy-core",
+      "sourceRoot": "projects/hy-core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/hy-core/tsconfig.lib.json",
+            "project": "projects/hy-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/hy-core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/hy-core/src/test.ts",
+            "tsConfig": "projects/hy-core/tsconfig.spec.json",
+            "karmaConfig": "projects/hy-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/hy-core/tsconfig.lib.json",
+              "projects/hy-core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-demo"
