@@ -1,5 +1,5 @@
-import { MockRequest, MockStatusError } from '@delon/mock'
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
+import { MockRequest, MockStatusError } from '@core/mock';
 
 export class AuthMock {
 

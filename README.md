@@ -1,6 +1,6 @@
 # Angular Demo
 
-This project was created for internal sharing and tutorial.
+This project was created for sharing and tutorial.
 
 ## Development server
 
@@ -9,3 +9,18 @@ Run `npm start` for a dev server. Auto startup browser and navigate to `http://l
 ## Features
 
 Use package [@delon/mock@^9.4.1](https://www.npmjs.com/package/@delon/mock/v/9.4.1)
+
+## Publish
+
+See [GitHub Pages](https://hollyliang.github.io/angular-demo/)
+
+```bash
+ng build --prod --base-href https://HollyLiang.github.io/angular-demo/
+angular-cli-ghpages -d dist/angular-demo/ --no-silent
+```
+
+## Future Plans
+
+- Create own use hy-core
+- Add research list
+- Upgrade to Angular 12
