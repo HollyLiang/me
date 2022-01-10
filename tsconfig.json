@@ -19,23 +19,29 @@
       "dom"
     ],
     "paths": {
-      "@api":[
+      "@env": [
+        "src/enviroment"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@api": [
         "src/app/api"
       ],
-      "@api/*":[
+      "@api/*": [
         "src/app/api/*"
       ],
-      "@model":[
+      "@model": [
         "src/app/model"
       ],
-      "@model/*":[
+      "@model/*": [
         "src/app/model/*"
       ],
-      "@core":[
+      "@core": [
         "projects/hy-core/src"
       ],
-      "@core/*":[
-        "projects/hy-core/src/*"
+      "@core/*": [
+        "projects/hy-core/*"
       ]
     }
   },

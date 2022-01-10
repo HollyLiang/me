@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthAPIService } from '@api/auth/auth.service';
-import { UserService } from '@core/storage';
+import { UserService } from '@core';
 
 @Component({
   selector: 'app-auth-signin',

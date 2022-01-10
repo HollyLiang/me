@@ -5,7 +5,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { UserService } from '@core/storage';
+import { UserService } from '@core';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {

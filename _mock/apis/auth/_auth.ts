@@ -22,8 +22,3 @@ export class AuthMock {
     return {};
   }
 }
-
-export const AUTH = {
-  'POST ~/api/auth/signIn': (req: MockRequest) => AuthMock.signIn(req),
-  'POST ~/api/auth/signOut': (req: MockRequest) => AuthMock.signOut(req),
-};
