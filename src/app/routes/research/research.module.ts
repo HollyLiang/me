@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ResearchRoutingModule } from './research-routing.module';
-import { MatModule } from 'src/app/shared/mat.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ResThemePage } from './theme/theme.page';
+import { NgModule } from '@angular/core';
 
 import { DialogComponent } from './dialog/dialog.component';
 import { RouterOutletComponent } from './dialog/router-outlet/router-outlet.component';
@@ -9,12 +9,12 @@ import { RouterOutletComponent } from './dialog/router-outlet/router-outlet.comp
 @NgModule({
   declarations: [
     DialogComponent,
-    RouterOutletComponent
+    RouterOutletComponent,
+    ResThemePage
   ],
   imports: [
-    CommonModule,
-    ResearchRoutingModule,
-    MatModule,
+    SharedModule,
+    ResearchRoutingModule
   ]
 })
 export class ResearchModule { }
