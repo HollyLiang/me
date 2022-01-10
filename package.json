@@ -1,5 +1,5 @@
 {
-  "name": "angular-demo",
+  "name": "me",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -43,7 +43,6 @@
     "karma-jasmine": "~3.3.1",
     "karma-jasmine-html-reporter": "^1.5.4",
     "ng-packagr": "^10.0.0",
-    "ng-zorro-antd": "^9.2.2",
     "protractor": "~7.0.0",
     "ts-node": "~8.10.2",
     "tslint": "~6.1.2",

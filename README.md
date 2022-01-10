@@ -12,11 +12,11 @@ Use package [@delon/mock@^9.4.1](https://www.npmjs.com/package/@delon/mock/v/9.4
 
 ## Publish
 
-See [GitHub Pages](https://hollyliang.github.io/angular-demo/)
+See [GitHub Pages](https://hollyliang.github.io/me/)
 
 ```bash
-ng build --prod --base-href https://HollyLiang.github.io/angular-demo/
-angular-cli-ghpages -d dist/angular-demo/ --no-silent
+ng build --prod --base-href https://HollyLiang.github.io/me/
+angular-cli-ghpages -d dist/me/ --no-silent
 ```
 
 ## Future Plans
