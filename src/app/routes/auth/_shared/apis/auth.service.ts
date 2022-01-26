@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UserService } from '@core';
 
-@Injectable({ providedIn: 'root' })
-export class AuthAPIService {
+@Injectable()
+export class AuthApiService {
 
   constructor(
     private http: HttpClient,

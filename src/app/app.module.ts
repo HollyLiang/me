@@ -7,6 +7,7 @@ import { environment } from '@env/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LayoutModule } from './layout/layout.module';
 
 // #region Http Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -26,19 +27,18 @@ const mockConfig: MockConfig = {
 };
 // #endregion
 
-import { LayoutComponent } from './layout/layout.component';
 import { HomePage } from './routes/home/home';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
     HomePage,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LayoutModule,
     HttpClientModule,
     MatModule,
     DelonMockModule.forRoot()

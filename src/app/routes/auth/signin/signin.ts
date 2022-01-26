@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthAPIService } from '@api/auth/auth.service';
 import { UserService } from '@core';
+import { AuthApiService } from '../_shared/apis/auth.service';
 
 @Component({
   selector: 'app-auth-signin',
@@ -19,7 +19,7 @@ export class SignInPage implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private authAPI: AuthAPIService
+    private authAPI: AuthApiService
   ) {
 
     let account = '';

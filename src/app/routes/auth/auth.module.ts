@@ -7,6 +7,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { SignInPage } from './signin/signin';
 
+import { AuthApiService } from './_shared/apis/auth.service';
+
 @NgModule({
   declarations: [SignInPage],
   imports: [
@@ -15,6 +17,9 @@ import { SignInPage } from './signin/signin';
     ReactiveFormsModule,
     AuthRoutingModule,
     SharedModule
+  ],
+  providers: [
+    AuthApiService,
   ]
 })
 export class AuthModule { }
