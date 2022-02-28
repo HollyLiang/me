@@ -39,17 +39,19 @@ export class SignInPage implements OnInit {
   }
 
   onFormSubmit() {
+    this.errorMsg = '';
+
     if (this.signInForm.valid) {
       const formValue = this.signInForm.value;
       const remember: boolean = this.signInForm.value.rememberMe;
       this.userService.rememberMe = remember;
       this.userService.account = remember ? formValue.account : '';
 
-      this.errorMsg = '';
 
       this.authAPI.signIn(formValue.account, formValue.password).subscribe(res => {
         this.router.navigate(['/']);
-      }, error => {
+      }, () => {
+        console.log('err')
         this.errorMsg = 'AccountOrPasswordError';
       });
     }
