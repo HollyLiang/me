@@ -1,27 +1,29 @@
 import { UserModel } from 'src/app/model/user.model';
 
 export class MD_User {
-  private static info: Array<MD_UserModel>;
-  private static pwd: Array<MD_UserPwdModel>;
+  private static _info: Array<MD_UserModel>;
+  private static _pwd: Array<MD_UserPwdModel>;
 
 
   public static get Info() {
-    return this.info || this.initInfo();
+    return this._info || this.initInfo();
   }
   private static initInfo() {
-    this.info.push({ id: '1', account: 'holly', 'name': 'Holly' });
-    return this.info;
+    this._info = [];
+    this._info.push({ id: '1', account: 'holly', name: 'Holly' });
+    return this._info;
   }
 
 
   public static get Pwd() {
-    return this.pwd || this.initPwd();
+    return this._pwd || this.initPwd();
   }
   private static initPwd() {
-    this.info.forEach(i => {
-      this.pwd.push({ userId: i.id, pwd: '123456' });
+    this._pwd = [];
+    this.Info.forEach(i => {
+      this._pwd.push({ userId: i.id, pwd: '123456' });
     });
-    return this.pwd;
+    return this._pwd;
   }
 }
 
