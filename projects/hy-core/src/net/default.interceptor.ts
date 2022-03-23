@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse
+  HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { UserService } from '@core';
+import { UserService } from '../storage';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
@@ -16,7 +16,6 @@ export class DefaultInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-
     const url = req.url;
     const isCallAPI = this._isCallAPI(url);
 
@@ -35,15 +34,14 @@ export class DefaultInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       mergeMap(event => {
         if (event instanceof HttpResponse) {
-          return this._handleResponse(event, req.url);
+          return this._handleResponse(event, url);
         }
         return of(event);
       }),
       catchError((error: HttpErrorResponse) => {
-        return of(error);
-        // return this._handleResponse(error, req.url);
+        return this._handleResponse(error, url);
       })
-    );
+    )
   }
 
   _handleResponse(event: HttpResponse<any> | HttpErrorResponse, url: string): Observable<any> {
@@ -58,7 +56,7 @@ export class DefaultInterceptor implements HttpInterceptor {
 
       case 400:
         // TODO: 400 Error
-        break;
+        throw new Error('400');
 
       case 401:
         this._navigateTo('auth/login');

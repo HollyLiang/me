@@ -25,11 +25,14 @@
       "@env/*": [
         "src/environments/*"
       ],
-      "@api": [
-        "src/app/api"
+      "@core": [
+        "projects/hy-core/src"
       ],
-      "@api/*": [
-        "src/app/api/*"
+      "@core/*": [
+        "projects/hy-core/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
       ],
       "@model": [
         "src/app/model"
@@ -37,11 +40,8 @@
       "@model/*": [
         "src/app/model/*"
       ],
-      "@core": [
-        "projects/hy-core/src"
-      ],
-      "@core/*": [
-        "projects/hy-core/*"
+      "@api/auth/*": [
+        "src/app/routes/auth/_shared/apis/*"
       ]
     }
   },

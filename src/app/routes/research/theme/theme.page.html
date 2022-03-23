@@ -1,12 +1,20 @@
 <div class="container">
   <section>
+    <h2>Dynamic Font Size</h2>
     <div>
-      <mat-slider step="1" min="10" max="20"
-        thumbLabel="true" [(ngModel)]="fontSize"
+      <mat-slider step="1" min="10" max="20" thumbLabel="true" [(ngModel)]="fontSize"
         (ngModelChange)="onFontSizeChange($event)">
       </mat-slider>
     </div>
-    <div class="basic-font-size">基礎文字</div>
-    <div class="large-font-size">較大的文字</div>
+    <div class="basic-font-size">Basic size</div>
+    <div class="large-font-size">Large size</div>
+  </section>
+
+  <section class="margin-top-2x">
+    <h2>CSS var()</h2>
+    <div class="row">
+      <div class="col-6 theme-section light">Light color</div>
+      <div class="col-6 theme-section dark">Dark color</div>
+    </div>
   </section>
 </div>

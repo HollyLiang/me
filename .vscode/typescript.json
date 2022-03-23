@@ -1,0 +1,14 @@
+{
+  "New Array Length": {
+    "prefix": "Array from",
+    "body": "Array.from(new Array(${1:10}))"
+  },
+  "Region": {
+    "prefix": "region",
+    "body": "// #region ${1}"
+  },
+  "Endregion": {
+    "prefix": "endregion",
+    "body":  "// #endregion"
+  }
+}

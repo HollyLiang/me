@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatModule } from './shared/mat.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,6 +7,22 @@ import { environment } from '@env/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LayoutModule } from './layout/layout.module';
+
+// #region Startup
+export function StartupServiceFactory(startupService: StartupService) {
+  return () => startupService.load();
+}
+const APPINIT_PROVIDES = [
+  StartupService,
+  {
+    provide: APP_INITIALIZER,
+    useFactory: StartupServiceFactory,
+    deps: [StartupService],
+    multi: true
+  },
+];
+// #endregion
 
 // #region Http Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -26,19 +42,19 @@ const mockConfig: MockConfig = {
 };
 // #endregion
 
-import { LayoutComponent } from './layout/layout.component';
 import { HomePage } from './routes/home/home';
+import { StartupService } from '@shared/startup';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
     HomePage,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LayoutModule,
     HttpClientModule,
     MatModule,
     DelonMockModule.forRoot()

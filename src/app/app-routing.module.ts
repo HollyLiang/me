@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '', component: LayoutComponent,
     children: [
-      { path: '', component: HomePage },
+      { path: '', component: HomePage, pathMatch: 'full' },
       {
         path: 'research',
         loadChildren: () => import('./routes/research/research.module').then(m => m.ResearchModule)

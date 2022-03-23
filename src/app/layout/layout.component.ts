@@ -1,5 +1,5 @@
-import { AuthAPIService } from '@api/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthApiService } from '@api/auth/auth.service';
 import { UserService } from '@core';
 
 @Component({
@@ -13,7 +13,7 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authAPI: AuthAPIService
+    private authAPI: AuthApiService
   ) { }
 
   ngOnInit() {
