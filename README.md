@@ -15,7 +15,7 @@ Use package [@delon/mock@^9.4.1](https://www.npmjs.com/package/@delon/mock/v/9.4
 See [GitHub Pages](https://hollyliang.github.io/me/)
 
 ```bash
-ng build --prod --base-href https://HollyLiang.github.io/me/
+ng build --prod --base-href https://HollyLiang.github.io/me/ --deploy-url /me/
 angular-cli-ghpages -d dist/me/ --no-silent
 ```
 

@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng s -o",
     "build": "ng build",
+    "build:prod": "ng build --prod --base-href https://HollyLiang.github.io/me/ --deploy-url /me/",
+    "deploy": "angular-cli-ghpages -d dist/me/ --no-silent",
     "test": "ng test",
     "lint": "ng lint"
   },
