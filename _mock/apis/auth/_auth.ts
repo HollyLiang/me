@@ -1,5 +1,5 @@
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
-import { MockRequest, MockStatusError } from '@core/mock';
+import { MockAuthorize, MockRequest, MockStatusError } from '@core/mock';
 import { MS } from '_mock/service';
 
 export class AuthMock {
