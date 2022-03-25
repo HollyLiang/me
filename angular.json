@@ -41,7 +41,13 @@
               "includePaths": [
                 "src/styles"
               ]
-            }
+            },
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -72,7 +78,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -111,14 +118,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         }
@@ -151,14 +155,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/hy-core/tsconfig.lib.json",
-              "projects/hy-core/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/hy-core/**/*.ts",
+              "projects/hy-core/**/*.html"
             ]
           }
         }
@@ -167,6 +168,7 @@
   },
   "defaultProject": "me",
   "cli": {
-    "analytics": "11c870a1-c610-434c-a990-ad28ef5e9bc3"
+    "analytics": "11c870a1-c610-434c-a990-ad28ef5e9bc3",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
