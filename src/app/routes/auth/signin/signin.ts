@@ -49,6 +49,7 @@ export class SignInPage implements OnInit {
 
 
       this.authAPI.signIn(formValue.account, formValue.password).subscribe(res => {
+        console.log(res);
         this.router.navigate(['/']);
       }, () => {
         console.log('err')

@@ -7,11 +7,14 @@ export class AuthMock {
   public static signIn(req: MockRequest) {
     const account = req.body.account;
     const password = req.body.password;
-    const user = MS.User.checkUserPassword(account, password);
-    if (user) {
+    const isValid = MS.User.checkUserPassword(account, password);
+    if (isValid) {
+      const user = MS.User.getUserByAccount(account);
       return new HttpResponse({
         body: {
-          account: account
+          id: user.id,
+          name: user.name,
+          imgUrl: user.imgUrl
         },
         headers: new HttpHeaders({ 'set-access-token': 'token' })
       });

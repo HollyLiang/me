@@ -8,7 +8,7 @@ export class MD_User {
   }
   private static initInfo() {
     this._info = [];
-    this._info.push({ id: '1', account: 'holly', name: 'Holly' });
+    this._info.push({ id: '1', account: 'holly', name: 'Holly', imgUrl: 'aseets/avatar/holly.jpeg' });
     return this._info;
   }
 
@@ -35,4 +35,5 @@ interface MD_UserModel {
   id: string;
   account: string;
   name: string;
+  imgUrl: string;
 }

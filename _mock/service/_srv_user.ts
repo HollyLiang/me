@@ -4,8 +4,12 @@ export class MS_User {
     return MD_User.Info.find(i => i.id === id);
   }
 
+  public static getUserByAccount(acc: string) {
+    return MD_User.Info.find(i => i.account === acc);
+  }
+
   public static checkUserPassword(acc: string, pwd: string) {
-    const user = MD_User.Info.find(i => i.account === acc);
+    const user = this.getUserByAccount(acc);
     if (!user) return false;
 
     const index = MD_User.Pwd.findIndex(p => p.userId === user.id && p.pwd === pwd);

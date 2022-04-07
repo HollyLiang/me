@@ -11,6 +11,8 @@ export class LayoutComponent implements OnInit {
 
   isSignIn: boolean;
 
+  userInfo = this.userService.userInfo;
+
   constructor(
     private userService: UserService,
     private authAPI: AuthApiService

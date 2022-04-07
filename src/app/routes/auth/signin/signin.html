@@ -1,31 +1,38 @@
 <div class="bg-blur"></div>
 <div class="bg-cover"></div>
 <div class="container">
-  <form [formGroup]="signInForm" (ngSubmit)="onFormSubmit()" #form="ngForm"
-    class="singin-container">
+  <form [formGroup]="signInForm" (ngSubmit)="onFormSubmit()"
+    #form="ngForm" class="singin-container">
     <h1 class="singin-header">Welcome</h1>
 
     <section>
       <mat-form-field class="col-12">
-        <mat-label>Account</mat-label>
-        <input matInput required formControlName="account">
+        <mat-label>Account</mat-label>''
+        <input matInput required placeholder="holly"
+          formControlName="account">
         <mat-error>
-          <app-form-error [control]="signInForm.controls.account"></app-form-error>
+          <app-form-error
+            [control]="signInForm.controls.account">
+          </app-form-error>
         </mat-error>
       </mat-form-field>
     </section>
     <section>
       <mat-form-field class="col-12">
         <mat-label>Password</mat-label>
-        <input matInput type="password" required formControlName="password">
+        <input matInput type="password" required
+          placeholder="123456" formControlName="password">
         <mat-error>
-          <app-form-error [control]="signInForm.controls.password"></app-form-error>
+          <app-form-error
+            [control]="signInForm.controls.password">
+          </app-form-error>
         </mat-error>
       </mat-form-field>
     </section>
 
     <section class="col-12">
-      <mat-slide-toggle class="example-margin" color="primary" formControlName="rememberMe">
+      <mat-slide-toggle class="example-margin"
+        color="primary" formControlName="rememberMe">
         Remember me
       </mat-slide-toggle>
     </section>
@@ -36,8 +43,10 @@
       </mat-error>
     </section>
 
-    <section class="col-10 offset-1" style="margin-top: 16px">
-      <button mat-raised-button color="primary" class="col-12" type="submit">Sign In</button>
+    <section class="col-10 offset-1"
+      style="margin-top: 16px">
+      <button mat-raised-button color="primary"
+        class="col-12" type="submit">Sign In</button>
     </section>
   </form>
 </div>

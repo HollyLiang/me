@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UserService } from '@core';
+import { AuthUserModel } from '../models/user.model';
 
 @Injectable()
 export class AuthApiService {
@@ -21,7 +22,11 @@ export class AuthApiService {
       account: acc,
       password: pwd,
     };
-    return this.http.post('~/api/auth/signIn', body);
+    return this.http.post<AuthUserModel>('~/api/auth/signIn', body)
+      .pipe(map(res => {
+        this.userService.userInfo = res;
+        return res;
+      }));
   }
 
   /**
