@@ -44,6 +44,7 @@ const mockConfig: MockConfig = {
 
 import { HomePage } from './routes/home/home';
 import { StartupService } from '@shared/startup';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { StartupService } from '@shared/startup';
     LayoutModule,
     HttpClientModule,
     MatModule,
-    DelonMockModule.forRoot()
+    DelonMockModule.forRoot(),
+    MarkdownModule.forRoot(),
   ],
   providers: [
     { provide: MOCK_CONFIG, useValue: mockConfig },
