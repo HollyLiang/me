@@ -1,5 +1,3 @@
-import { UserModel } from 'src/app/model/user.model';
-
 export class MD_User {
   private static _info: Array<MD_UserModel>;
   private static _pwd: Array<MD_UserPwdModel>;
