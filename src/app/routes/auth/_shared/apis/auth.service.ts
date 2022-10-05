@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { UserService } from '@core';
+import { UserService } from '@hy/core';
 import { AuthUserModel } from '../models/user.model';
 
 @Injectable()

@@ -1,4 +1,4 @@
-import { MockRequest } from '@core/mock';
+import { MockRequest } from '@hy/core/mock';
 import { AuthMock } from './auth/_auth';
 
 const Mock = {
