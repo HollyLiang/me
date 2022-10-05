@@ -1,0 +1,10 @@
+<h2>Lab1 Sub</h2>
+<section>
+  <p>是否第一次變更: {{ isFirstChange }}</p>
+  <p>之前值: {{ previousValue }}</p>
+  <p>現在值: {{ currentValue }}</p>
+</section>
+<mat-form-field>
+  <input matInput [(ngModel)]="text" />
+</mat-form-field>
+<button mat-button (click)="onSendClick()">送出</button>
