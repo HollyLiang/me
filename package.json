@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "=======================================": "",
-    "install:hy-eslint": "npm i ../hy-eslint/hy-eslint-plugin-1.0.0.tgz --no-save"
+    "install:hy-eslint": "npm i ../hy-eslint/hy-eslint-plugin-1.0.0.tgz --no-save",
   },
   "private": true,
   "dependencies": {
