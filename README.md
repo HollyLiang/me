@@ -14,13 +14,8 @@ Use package [@delon/mock@^9.4.1](https://www.npmjs.com/package/@delon/mock/v/9.4
 
 See [GitHub Pages](https://hollyliang.github.io/me/)
 
-```bash
-ng build --prod --base-href https://HollyLiang.github.io/me/ --deploy-url /me/
-angular-cli-ghpages -d dist/me/ --no-silent
-```
+## Todo List
 
-## Future Plans
-
-- Create own use hy-core
-- Add research list
-- Upgrade to Angular 12
+- [Lab] HTTP PUT & Delete
+- [Lab] Directive
+- [Lab] Decorator

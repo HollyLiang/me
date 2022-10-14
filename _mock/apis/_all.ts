@@ -9,4 +9,5 @@ export const AUTH = {
 
 export const BOOK = {
   'GET ~/api/books': (req: MockRequest) => BookMock.getBookList(req),
+  'POST ~/api/book': (req: MockRequest) => BookMock.addBook(req),
 };

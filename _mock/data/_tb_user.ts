@@ -12,7 +12,7 @@ export class TB_User {
   }
 }
 
-interface TB_UserModel {
+export interface TB_UserModel {
   id: string;
   account: string;
   name: string;

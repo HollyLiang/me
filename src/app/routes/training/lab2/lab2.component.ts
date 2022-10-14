@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Lab2Component implements OnInit {
+  displayedColumns: Array<string> = ['no', 'name', 'author', 'press', 'publishDate', 'price', 'discount'];
   books: Array<BookModel> = [];
 
   constructor(
@@ -26,10 +27,14 @@ export class Lab2Component implements OnInit {
     });
   }
 
-  calcSpecialPrice(price: number, discount: number) {
-    console.log('calcSpecialPrice')
+  calcDisCount(price: number, discount: number) {
     return Math.round(price * discount);
   }
+
+  calcSpecialPrice(price: number, discount: number) {
+    return Math.round(price * discount);
+  }
+
 }
 
 interface BookModel {

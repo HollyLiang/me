@@ -34,7 +34,7 @@ export class TB_Book {
 }
 
 
-interface TB_BookModel {
+export interface TB_BookModel {
   no: string;
   /** 書名 */
   name: string;

@@ -1,0 +1,54 @@
+<div class="container">
+  <h2>Lab3</h2>
+  <ul>
+    <li>練習 HTTP POST</li>
+    <li>練習 FormGroup</li>
+    <li>練習 Form Validator</li>
+  </ul>
+  <section [formGroup]="form">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>書名</mat-label>
+        <input matInput required formControlName="name">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>作者</mat-label>
+        <input matInput required formControlName="author">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>出版社</mat-label>
+        <input matInput required formControlName="press">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>出版日期</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="publishDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>價格</mat-label>
+        <input matInput type="number" min="1" formControlName="price">
+        <span matPrefix>NT$&nbsp;</span>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>折扣</mat-label>
+        <input matInput type="number" min="0" max="1" formControlName="discount">
+      </mat-form-field>
+    </p>
+  </section>
+  <section class="padding-bottom-2x">
+    <button mat-raised-button (click)="onDoneClick()">
+      Done
+    </button>
+  </section>
+</div>

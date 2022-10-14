@@ -14,7 +14,7 @@ export class TB_UserPwd {
 }
 
 
-interface TB_UserPwdModel {
+export interface TB_UserPwdModel {
   userId: string;
   pwd: string;
 }
