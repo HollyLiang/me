@@ -7,6 +7,7 @@ import { environment } from '@env/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 // #region Startup
 export function StartupServiceFactory(startupService: StartupService) {
@@ -36,14 +37,13 @@ const INTERCEPTOR_PROVIDES = [
 import { DelonMockModule, MockConfig, MOCK_CONFIG } from '@hy/core/mock';
 import * as MOCKDATA from '../../_mock';
 const mockConfig: MockConfig = {
-  data: environment.production ? null : MOCKDATA,
-  log: true// environment.DELON_MOCK_REQUEST_LOG
+  data: MOCKDATA,
+  log: environment.production === false
 };
 // #endregion
 
 import { HomePage } from './routes/home/home';
 import { StartupService } from '@shared/startup';
-import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
