@@ -13,6 +13,10 @@ const routes: Routes = [
       {
         path: 'research',
         loadChildren: () => import('./routes/research/research.module').then(m => m.ResearchModule)
+      },
+      {
+        path: 'training',
+        loadChildren: () => import('./routes/training/training.module').then(m => m.TrainingModule)
       }
     ]
   },
@@ -23,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

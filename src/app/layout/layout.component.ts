@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthApiService } from '@api/auth/auth.service';
-import { UserService } from '@core';
+import { UserService } from '@hy/core';
 
 @Component({
   selector: 'app-layout',
@@ -10,6 +10,8 @@ import { UserService } from '@core';
 export class LayoutComponent implements OnInit {
 
   isSignIn: boolean;
+
+  userInfo = this.userService.userInfo;
 
   constructor(
     private userService: UserService,

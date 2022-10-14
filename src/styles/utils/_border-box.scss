@@ -1,0 +1,44 @@
+$border-box-type: 'margin', 'padding';
+$unit: 8px;
+$direction: 'top', 'bottom', 'left', 'right';
+@each $type in $border-box-type {
+  // 8px ~ 64px
+  @for $i from 1 through 8 {
+    $suffix: '';
+    @if $i > 1 {
+      $suffix: '-' + $i + 'x';
+    }
+
+    .#{$type}#{$suffix} {
+      #{$type}: $unit * $i;
+    }
+
+    // vertical, horizontal
+    .#{$type}-v#{$suffix} {
+      #{$type}-top: $unit * $i;
+      #{$type}-bottom: $unit * $i;
+
+    }
+
+    .#{$type}-h#{$suffix} {
+      #{$type}-left: $unit * $i;
+      #{$type}-right: $unit * $i;
+
+    }
+
+    // top, bottom, left, right
+    @each $direct in $direction {
+      .#{$type}-#{$direct}#{$suffix} {
+        #{$type}-#{$direct}: $unit * $i;
+      }
+    }
+  }
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}

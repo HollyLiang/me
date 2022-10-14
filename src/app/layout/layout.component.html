@@ -21,6 +21,7 @@
 
 <ng-template #signInButtonTemplate>
   <ng-container *ngIf="isSignIn; else elseTemplate">
+    {{ userInfo && userInfo.name }}
     <button mat-button (click)="onSignOutClick()">Sign
       Out</button>
   </ng-container>

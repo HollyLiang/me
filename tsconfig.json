@@ -7,7 +7,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
@@ -20,15 +20,15 @@
     ],
     "paths": {
       "@env": [
-        "src/enviroment"
+        "src/environments"
       ],
       "@env/*": [
         "src/environments/*"
       ],
-      "@core": [
+      "@hy/core": [
         "projects/hy-core/src"
       ],
-      "@core/*": [
+      "@hy/core/*": [
         "projects/hy-core/*"
       ],
       "@shared/*": [

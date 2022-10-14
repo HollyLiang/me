@@ -1,0 +1,25 @@
+$unit: 5px;
+$direction: 'top', 'bottom', 'left', 'right';
+
+.border-radius-50 {
+  border-radius: 50%;
+}
+
+// 5px ~ 60px
+@for $i from 1 through 12 {
+  $suffix: '';
+  @if $i > 1 {
+    $suffix: '-' + $i + 'x';
+  }
+
+  .border-radius#{$suffix} {
+    border-radius: $unit * $i;
+  }
+
+  // top, bottom, left, right
+  @each $direct in $direction {
+    .border-radius-#{$direct}#{$suffix} {
+      border-radius-#{$direct}: $unit * $i;
+    }
+  }
+}

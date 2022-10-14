@@ -1,4 +1,5 @@
 
+export * from './src/authorize';
 export * from './src/interface';
 export * from './src/mock.config';
 export * from './src/mock.module';

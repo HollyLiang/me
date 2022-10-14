@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Lab2</h2>
+  <ul>
+    <li>練習 http get</li>
+    <li>練習 ngFor</li>
+    <li>練習 ngIf</li>
+  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>書名</th>
+        <th>作者</th>
+        <th>出版社</th>
+        <th>出版日期</th>
+        <th>價格</th>
+        <th>優惠價</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+        <td class="nowrap">{{ book.press }}</td>
+        <td class="nowrap">{{ book.publishDate | date: 'MM/dd/yy' }}</td>
+        <td class="nowrap">{{ book.price }}</td>
+        <td class="nowrap">
+          <ng-container
+            *ngIf="book.discount < 1; else elseTemplate">
+            {{ book.discount * 100 }}折
+            {{ calcSpecialPrice(book.price, book.discount) }} 元
+          </ng-container>
+          <ng-template #elseTemplate>
+            <div style="text-align: center;">-</div>
+          </ng-template>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

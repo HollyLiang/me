@@ -3,6 +3,7 @@ import { LocalStorageService } from './local-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+
   constructor(private localStorage: LocalStorageService) { }
 
   public set accessToken(value: string) {
@@ -25,4 +26,18 @@ export class UserService {
   public get rememberMe(): boolean {
     return this.localStorage.getItem('RememberMe') === 'true';
   }
+
+  public set userInfo(value: CoreUserModel) {
+    this.localStorage.setItem('userInfo', JSON.stringify(value));
+  }
+  public get userInfo(): CoreUserModel {
+    const info = this.localStorage.getItem('userInfo');
+    return (info && JSON.parse(info)) || null;
+  }
+}
+
+interface CoreUserModel {
+  id: string;
+  name: string;
+  imgUrl: string;
 }

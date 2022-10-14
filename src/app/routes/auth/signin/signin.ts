@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '@core';
+import { UserService } from '@hy/core';
 import { AuthApiService } from '../_shared/apis/auth.service';
 
 @Component({
@@ -49,6 +49,7 @@ export class SignInPage implements OnInit {
 
 
       this.authAPI.signIn(formValue.account, formValue.password).subscribe(res => {
+        console.log(res);
         this.router.navigate(['/']);
       }, () => {
         console.log('err')

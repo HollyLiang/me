@@ -1,11 +1,12 @@
-import { MockRequest } from '@core/mock';
 import { AuthMock } from './auth/_auth';
-
-const Mock = {
-  Auth: AuthMock
-};
+import { BookMock } from './book/_book';
+import { MockRequest } from '@hy/core/mock';
 
 export const AUTH = {
-  'POST ~/api/auth/signIn': (req: MockRequest) => Mock.Auth.signIn(req),
-  'POST ~/api/auth/signOut': (req: MockRequest) => Mock.Auth.signOut(req),
+  'POST ~/api/auth/signIn': (req: MockRequest) => AuthMock.signIn(req),
+  'POST ~/api/auth/signOut': (req: MockRequest) => AuthMock.signOut(req),
+};
+
+export const BOOK = {
+  'GET ~/api/books': (req: MockRequest) => BookMock.getBookList(req),
 };
