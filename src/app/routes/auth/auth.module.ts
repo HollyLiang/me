@@ -1,3 +1,4 @@
+import { LineApiService } from './_shared/apis/line.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,9 +9,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { SignInPage } from './signin/signin';
 
 import { AuthApiService } from './_shared/apis/auth.service';
+import { AuthLineLoginBtnComponent } from './signin/comps/line-login-btn.component';
 
 @NgModule({
-  declarations: [SignInPage],
+  declarations: [
+    SignInPage,
+    AuthLineLoginBtnComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,6 +25,7 @@ import { AuthApiService } from './_shared/apis/auth.service';
   ],
   providers: [
     AuthApiService,
+    LineApiService,
   ]
 })
 export class AuthModule { }

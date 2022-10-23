@@ -1,10 +1,12 @@
+import { AuthLineSignInCallbackPage } from './line-signin-callback/line-signin-callback.page';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SignInPage } from './signin/signin';
 
 
 const routes: Routes = [
-  { path: 'signIn', component: SignInPage }
+  { path: 'signIn', component: SignInPage },
+  { path: 'line/callback', component: AuthLineSignInCallbackPage },
 ];
 
 @NgModule({

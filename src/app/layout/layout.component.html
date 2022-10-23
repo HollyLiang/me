@@ -21,7 +21,9 @@
 
 <ng-template #signInButtonTemplate>
   <ng-container *ngIf="isSignIn; else elseTemplate">
-    {{ userInfo && userInfo.name }}
+    <img [src]="userInfo && userInfo.imgUrl"
+      class="border-radius-50 margin-right" style="width: 30px">
+    <span class="margin-right">{{ userInfo && userInfo.name }}</span>
     <button mat-button (click)="onSignOutClick()">Sign
       Out</button>
   </ng-container>

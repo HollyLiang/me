@@ -1,0 +1,19 @@
+:host {
+  display: block;
+
+  .line-btn {
+    width: 142px;
+    height: 40px;
+    cursor: pointer;
+    background-image: url('/assets/img/line-btn/2x/20dp/btn_login_base.png');
+
+    &:hover {
+      background-image: url('/assets/img/line-btn/2x/20dp/btn_login_hover.png');
+    }
+
+    &:active {
+      background-image: url('/assets/img/line-btn/2x/20dp/btn_login_press.png');
+
+    }
+  }
+}
