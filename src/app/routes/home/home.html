@@ -1,19 +1,10 @@
 <div class="container">
-  <h2>Features</h2>
-  <div class="row development-section">
-    <div class="col-3" routerLink="/research/dialog">
-      Dialog with router-outlet
+  <ng-container *ngFor="let group of list">
+    <h2>{{ group.groupName }}</h2>
+    <div class="row development-section">
+      <div *ngFor="let page of group.pages" class="col-3" [routerLink]="page.link">
+        {{ page.subject }}
+      </div>
     </div>
-  </div>
-  <h2>SCSS</h2>
-  <div class="row development-section">
-    <div class="col-3" routerLink="/research/theme">
-      Font & Color Theme
-    </div>
-  </div>
-  <h2>Training</h2>
-  <div class="row development-section">
-    <div class="col-3" routerLink="/training/lab1">Lab1</div>
-    <div class="col-3" routerLink="/training/lab2">Lab2</div>
-  </div>
+  </ng-container>
 </div>

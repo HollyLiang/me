@@ -1,3 +1,4 @@
+import { LineApiService } from './../../_shared/apis/line.service';
 import { environment } from '@env/environment';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,20 +12,22 @@ export class AuthLineLoginBtnComponent implements OnInit {
 
   readonly redirectUrl = location.origin + '/auth/line/callback';
 
-  constructor() { }
+  constructor(private lineService: LineApiService) { }
 
   ngOnInit() { }
 
   onLineLoginClick() {
-    const params = [
-      'response_type=code',
-      `client_id=1657583999`,
-      'state=123123',
-      'scope=profile%20openid	',
-      `redirect_uri=${this.redirectUrl}`,
-      'nonce=09876xyz'
-    ];
-    const url = `https://access.line.me/oauth2/v2.1/authorize?${params.join('&')}`
-    window.open(url, '_self');
+    this.lineService.getApiClientId().subscribe(res => {
+      const params = [
+        'response_type=code',
+        `client_id=${res}`,
+        'state=123123',
+        'scope=profile%20openid	',
+        `redirect_uri=${this.redirectUrl}`,
+        'nonce  =09876xyz'
+      ];
+      const url = `https://access.line.me/oauth2/v2.1/authorize?${params.join('&')}`
+      window.open(url, '_self');
+    });
   }
 }

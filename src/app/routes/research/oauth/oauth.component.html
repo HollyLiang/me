@@ -1,0 +1,30 @@
+<div class="container" [formGroup]="form">
+  <a (click)="onLineLoginClick()" >Line Login</a>
+  <mat-card>
+    <mat-form-field class="w100">
+      <input matInput placeholder="Client ID" autocomplete="off"
+        formControlName="clientId" />
+    </mat-form-field>
+    <mat-form-field class="w100">
+      <input matInput placeholder="Client Secret" autocomplete="off"
+        formControlName="clientSecret" />
+    </mat-form-field>
+    <button mat-button color="primary"
+      (click)="onCreateAccessTokenClick()">Create Access Token</button>
+
+    <mat-form-field class="w100 margin-top-5x">
+      <input matInput placeholder="Code" readonly="true"
+        formControlName="code" />
+    </mat-form-field>
+    <mat-form-field class="w100">
+      <input matInput placeholder="Access Token" autocomplete="off"
+        formControlName="accessToken" />
+    </mat-form-field>
+    <mat-form-field class="w100">
+      <input matInput placeholder="Message" autocomplete="off"
+        formControlName="message" />
+    </mat-form-field>
+    <button mat-button mat-button-raised color="primary"
+      (click)="onSendMsgClick()">Send Message</button>
+  </mat-card>
+</div>

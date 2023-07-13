@@ -16,10 +16,13 @@ export class LineApiService {
     private userService: UserService
   ) { }
 
+  public getApiClientId() {
+    return this.http.get<string>(`${environment.serverUrl}Line/login/clientId`);
+  }
+
   /**
-   * Sign In
-   * @param acc Account
-   * @param pwd Password
+   * Get Line login token
+   * @param code Authorization code
    */
   public loginToken(code: string) {
     const body = { code, redirectUri: location.origin + '/auth/line/callback' };
