@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,13 +13,13 @@ export class OAuthComponent implements OnInit {
   // readonly REDIRECT_URL = 'http://localhost:40001/research/oauth';
   readonly REDIRECT_URL = 'http://10.8.0.101/research/oauth';
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   code: string;
 
   constructor(
     private http: HttpClient,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
   ) {
     this.initForm();

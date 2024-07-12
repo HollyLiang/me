@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-form-error',
@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
   }
 })
 export class FormErrorComponent {
-  @Input() control: FormControl;
+  @Input() control: UntypedFormControl;
 
   @Input() requiredText = 'Required';
   @Input() formatIncorrectText = 'Email Format incorrect';

@@ -174,9 +174,10 @@
       }
     }
   },
-  "defaultProject": "me",
   "cli": {
     "analytics": "11c870a1-c610-434c-a990-ad28ef5e9bc3",
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

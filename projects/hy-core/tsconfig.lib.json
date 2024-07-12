@@ -5,7 +5,7 @@
     "outDir": "../../out-tsc/lib",
     "rootDir": "",
     "declarationMap": true,
-    "target": "es2015",
+    "target": "es2020",
     "declaration": true,
     "inlineSources": true,
     "types": [],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '@hy/core';
 import { AuthApiService } from '../_shared/apis/auth.service';
@@ -11,12 +11,12 @@ import { AuthApiService } from '../_shared/apis/auth.service';
 })
 export class SignInPage implements OnInit {
 
-  signInForm: FormGroup;
+  signInForm: UntypedFormGroup;
 
   errorMsg: string;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private userService: UserService,
     private authAPI: AuthApiService
