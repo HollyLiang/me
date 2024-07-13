@@ -93,18 +93,18 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "port": 4800,
-            "browserTarget": "me:build"
+            "buildTarget": "me:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "me:build:production"
+              "buildTarget": "me:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "me:build"
+            "buildTarget": "me:build"
           }
         },
         "test": {
