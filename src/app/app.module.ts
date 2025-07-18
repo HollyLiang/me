@@ -25,7 +25,7 @@ const APPINIT_PROVIDES = [
 // #endregion
 
 // #region Http Interceptors
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { DefaultInterceptor } from '@hy/core';
 
 const INTERCEPTOR_PROVIDES = [
@@ -45,25 +45,19 @@ const mockConfig: MockConfig = {
 import { HomePage } from './routes/home/home';
 import { StartupService } from '@shared/startup';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomePage,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    HttpClientModule,
-    MatModule,
-    DelonMockModule.forRoot(),
-    MarkdownModule.forRoot(),
-  ],
-  providers: [
-    { provide: MOCK_CONFIG, useValue: mockConfig },
-    ...INTERCEPTOR_PROVIDES,
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomePage,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        MatModule,
+        DelonMockModule.forRoot(),
+        MarkdownModule.forRoot()], providers: [
+        { provide: MOCK_CONFIG, useValue: mockConfig },
+        ...INTERCEPTOR_PROVIDES,
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
