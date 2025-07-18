@@ -1,11 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatCard } from '@angular/material/card';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-training-oauth',
-  templateUrl: 'oauth.component.html'
+    selector: 'app-training-oauth',
+    templateUrl: 'oauth.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, MatCard, MatFormField, MatInput, MatButton]
 })
 
 export class OAuthComponent implements OnInit {

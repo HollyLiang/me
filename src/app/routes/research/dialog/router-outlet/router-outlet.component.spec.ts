@@ -8,8 +8,8 @@ describe('RouterOutletComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouterOutletComponent ]
-    })
+    imports: [RouterOutletComponent]
+})
     .compileComponents();
   }));
 

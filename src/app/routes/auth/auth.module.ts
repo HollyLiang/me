@@ -12,20 +12,18 @@ import { AuthApiService } from './_shared/apis/auth.service';
 import { AuthLineLoginBtnComponent } from './signin/comps/line-login-btn.component';
 
 @NgModule({
-  declarations: [
-    SignInPage,
-    AuthLineLoginBtnComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AuthRoutingModule,
-    SharedModule
-  ],
-  providers: [
-    AuthApiService,
-    LineApiService,
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AuthRoutingModule,
+        SharedModule,
+        SignInPage,
+        AuthLineLoginBtnComponent
+    ],
+    providers: [
+        AuthApiService,
+        LineApiService,
+    ]
 })
 export class AuthModule { }

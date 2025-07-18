@@ -9,17 +9,15 @@ import { RouterOutletComponent } from './dialog/router-outlet/router-outlet.comp
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    DialogComponent,
-    OAuthComponent,
-    OAuthLingLoginComponent,
-    RouterOutletComponent,
-    ResThemePage,
-  ],
-  imports: [
-    SharedModule,
-    ResearchRoutingModule,
-    MarkdownModule.forChild(),
-  ]
+    imports: [
+        SharedModule,
+        ResearchRoutingModule,
+        MarkdownModule.forChild(),
+        DialogComponent,
+        OAuthComponent,
+        OAuthLingLoginComponent,
+        RouterOutletComponent,
+        ResThemePage,
+    ]
 })
 export class ResearchModule { }

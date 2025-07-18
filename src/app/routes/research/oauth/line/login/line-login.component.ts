@@ -3,8 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-oauth-line-login',
-  templateUrl: 'line-login.component.html'
+    selector: 'app-oauth-line-login',
+    templateUrl: 'line-login.component.html',
+    standalone: true
 })
 
 export class OAuthLingLoginComponent implements OnInit {

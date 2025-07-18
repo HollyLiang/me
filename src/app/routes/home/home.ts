@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.html',
-  styleUrls: ['./home.scss']
+    selector: 'app-home',
+    templateUrl: './home.html',
+    styleUrls: ['./home.scss'],
+    standalone: true,
+    imports: [NgFor, RouterLink]
 })
 export class HomePage implements OnInit {
 

@@ -3,9 +3,10 @@ import { environment } from '@env/environment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-auth-line-login-btn',
-  templateUrl: 'line-login-btn.component.html',
-  styleUrls: ['./line-login-btn.component.scss']
+    selector: 'app-auth-line-login-btn',
+    templateUrl: 'line-login-btn.component.html',
+    styleUrls: ['./line-login-btn.component.scss'],
+    standalone: true
 })
 
 export class AuthLineLoginBtnComponent implements OnInit {

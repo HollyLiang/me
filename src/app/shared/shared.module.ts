@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormErrorComponent } from './form-error/form-error.component';
-import { MatModule } from './mat.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const BASIC = [
@@ -11,17 +11,13 @@ const BASIC = [
 ];
 
 @NgModule({
-  declarations: [
-    FormErrorComponent
-  ],
-  imports: [
+    imports: [
     ...BASIC,
-    MatModule
-  ],
-  exports: [
-    ...BASIC,
-    MatModule,
     FormErrorComponent
-  ]
+],
+    exports: [
+    ...BASIC,
+    FormErrorComponent
+]
 })
 export class SharedModule { }

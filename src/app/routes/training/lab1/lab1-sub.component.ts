@@ -1,9 +1,15 @@
 import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-training-lab1-sub',
-  templateUrl: './lab1-sub.component.html',
-  styleUrls: ['./lab1-sub.component.scss']
+    selector: 'app-training-lab1-sub',
+    templateUrl: './lab1-sub.component.html',
+    styleUrls: ['./lab1-sub.component.scss'],
+    standalone: true,
+    imports: [MatFormField, MatInput, FormsModule, MatButton]
 })
 export class Lab1SubComponent implements OnInit, OnChanges {
 

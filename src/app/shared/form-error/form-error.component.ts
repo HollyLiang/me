@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-form-error',
-  templateUrl: './form-error.component.html',
-  host: {
-    '[class.hy-form-error]': 'true',
-  }
+    selector: 'app-form-error',
+    templateUrl: './form-error.component.html',
+    host: {
+        '[class.hy-form-error]': 'true',
+    },
+    standalone: true,
+    imports: [NgIf]
 })
 export class FormErrorComponent {
   @Input() control: UntypedFormControl;

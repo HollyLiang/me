@@ -23,14 +23,12 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes),
-    SharedModule,
-  ],
-  exports: [],
-  declarations: [
-    ...COMPONENTS
-  ],
-  providers: [],
+    imports: [
+        RouterModule.forChild(routes),
+        SharedModule,
+        ...COMPONENTS,
+    ],
+    exports: [],
+    providers: [],
 })
 export class TrainingModule { }

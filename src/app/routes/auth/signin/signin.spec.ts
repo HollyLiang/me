@@ -8,8 +8,8 @@ describe('SignInPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignInPage ]
-    })
+    imports: [SignInPage]
+})
     .compileComponents();
   }));
 
