@@ -1,8 +1,8 @@
+
+
 :root {
   font-size: 10px;
   line-height: 10px;
-
-  --text-color: #333;
 }
 
 body,
@@ -14,32 +14,4 @@ body {
   margin: 0;
   color: var(--text-color);
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.w100 {
-  width: 100%;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.flex-direct-row {
-  flex-direction: row;
-}
-
-.flex-direct-col {
-  flex-direction: column;
-}
-
-.align-items-center {
-  align-items: center;
-}
-
-.justify-content-center {
-  justify-content: center;;
-}
-
-.text-center {
-  text-align: center;
 }

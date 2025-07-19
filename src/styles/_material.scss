@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+
+:root {
+  // Sidenav
+  @include mat.sidenav-overrides((
+    container-background-color: #f9f9f9,
+    content-background-color: #fcfcfc,
+    container-divider-color: transparent,
+  ));
+}
+
+.mat-drawer-side {
+  border: none;
+  box-shadow: var(--box-shadow);
+}
+
+.mdc-list {
+  .mdc-list-item {
+    &:hover {
+      cursor: pointer;;
+      background-color: rgb(230, 230, 238);
+    }
+  }
+}

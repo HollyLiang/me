@@ -1,0 +1,10 @@
+<div class="notes container d-flex ">
+  <article class="flex-1">
+    <ng-content></ng-content>
+  </article>
+  <section class="outline-content">
+    <mat-list>
+      <a *ngFor="let item of outline" mat-list-item (click)="onItemClick(item)">{{ item.innerText }}</a>
+    </mat-list>
+  </section>
+</div>

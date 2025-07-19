@@ -1,0 +1,37 @@
+<mat-toolbar class="layout-header" color="primary">
+  <mat-toolbar-row>
+    <div class="d-flex w100">
+      <button mat-icon-button class="menu-button" (click)="menuClick.emit()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="d-flex align-items-center flex-1">
+        <a routerLink="/" class="brand m-left"><mat-icon style="color: rgb(246, 211, 141)">rocket_launch</mat-icon>
+          Research Space</a>
+        <span class="spacer"></span>
+        <ng-container *ngTemplateOutlet="signInButtonTemplate">
+        </ng-container>
+        <!-- <button mat-icon-button class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button> -->
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<ng-template #signInButtonTemplate>
+  <ng-container *ngIf="isSignIn; else elseTemplate">
+    <img [src]="userInfo && userInfo.imgUrl" class="border-radius-50 margin-right" style="width: 30px">
+    <span class="margin-right">{{ userInfo && userInfo.name }}</span>
+    <button mat-button (click)="onSignOutClick()">Sign
+      Out</button>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <button mat-button routerLink="/auth/signIn">Sign
+      In</button>
+  </ng-template>
+</ng-template>

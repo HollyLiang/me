@@ -1,33 +1,11 @@
 :host {
-  .layout-header {
-    background-color: #333;
-    box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
-
-    .example-spacer {
-      flex: 1 1 auto;
-    }
-
-    .brand {
-      color: #fff;
-      font-size: 2.6rem;
-      text-decoration: none;
-      // text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
-
-      // &:hover,
-      // &:active {
-      //   text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.9);
-      // }
-    }
+  .mat-drawer-side {
+    box-shadow: var(--box-shadow);
   }
 
   .layout-content {
     padding-top: 12px;
-  }
-
-  .author {
-    img {
-      width: 80px;
-      border-radius: 50%;
-    }
+    height: calc(100vh - 64px);
+    overflow: auto;
   }
 }

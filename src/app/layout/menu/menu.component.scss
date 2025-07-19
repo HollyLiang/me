@@ -1,0 +1,28 @@
+:host {
+  ::ng-deep {
+    display: block;
+    width: 200px;
+
+    h2 {
+      margin-bottom: 0;
+      padding: 1rem;
+      color: rgb(17, 39, 104);
+      font-size: 2.4rem;
+    }
+
+    h3 {
+      margin-bottom: 0;
+      padding: .5rem 1rem .5rem 2rem;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    .mdc-list {
+      padding: 0;
+      .mdc-list-item {
+        padding-left: 3rem;
+        height: 3.5rem;
+      }
+    }
+  }
+}

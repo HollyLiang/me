@@ -1,5 +1,5 @@
 import * as MOCK_DATA from '_mock'
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
@@ -33,7 +33,9 @@ bootstrapApplication(AppComponent, {
     { provide: MOCK_CONFIG, useValue: mockConfig },
     ...INTERCEPTOR_PROVIDES,
     provideHttpClient(withInterceptorsFromDi()),
-    provideAnimations()
+    provideAnimations(),
+    provideMarkdown()
   ]
 })
   .catch(err => console.error(err));
+

@@ -1,34 +1,11 @@
-<mat-toolbar class="layout-header" color="primary">
-  <mat-toolbar-row class="container">
-    <a routerLink="/" class="brand">🚀 Research
-      Space</a>
-    <span class="example-spacer"></span>
-    <ng-container *ngTemplateOutlet="signInButtonTemplate">
-    </ng-container>
-    <!-- <button mat-icon-button class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button> -->
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<div class="layout-content">
-  <router-outlet></router-outlet>
-</div>
-
-<ng-template #signInButtonTemplate>
-  <ng-container *ngIf="isSignIn; else elseTemplate">
-    <img [src]="userInfo && userInfo.imgUrl"
-      class="border-radius-50 margin-right" style="width: 30px">
-    <span class="margin-right">{{ userInfo && userInfo.name }}</span>
-    <button mat-button (click)="onSignOutClick()">Sign
-      Out</button>
-  </ng-container>
-  <ng-template #elseTemplate>
-    <button mat-button routerLink="/auth/signIn">Sign
-      In</button>
-  </ng-template>
-</ng-template>
+<app-header (menuClick)="drawer.toggle()"></app-header>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side">
+    <app-menu></app-menu>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class=" layout-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

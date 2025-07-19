@@ -1,0 +1,31 @@
+:host {
+  ::ng-deep {
+    .note-section {
+      display: block;
+      padding: 2rem 0;
+
+      h2 {
+        padding: 1rem 1rem;
+        border-radius: 5px;
+        color: #333;
+        background-color: var(--border-color);
+      }
+
+      .link-data {
+        margin-top: 1rem;
+
+        blockquote {
+          margin: 0;
+          padding: 1rem;
+          border-left: 4px solid var(--border-color);
+          border-radius: 5px;
+          background-color: #f6f6f6;
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

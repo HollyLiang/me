@@ -1,37 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthApiService } from '@api/auth/auth.service';
-import { UserService } from '@hy/core';
-import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { NgTemplateOutlet, NgIf } from '@angular/common';
-import { MatButton } from '@angular/material/button';
+import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterOutlet } from '@angular/router';
+
+import { HeaderComponent } from "./header/header.component";
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
-    selector: 'app-layout',
-    templateUrl: './layout.component.html',
-    styleUrls: ['./layout.component.scss'],
-    standalone: true,
-    imports: [MatToolbar, MatToolbarRow, RouterLink, NgTemplateOutlet, RouterOutlet, NgIf, MatButton]
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss'],
+  standalone: true,
+  imports: [MatSidenavModule, MatIconModule, RouterOutlet, HeaderComponent, MenuComponent]
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
 
-  isSignIn: boolean;
-
-  userInfo = this.userService.userInfo;
-
-  constructor(
-    private userService: UserService,
-    private authAPI: AuthApiService
-  ) { }
-
-  ngOnInit() {
-    this.isSignIn = this.userService.accessToken && true;
-  }
-
-  onSignOutClick() {
-    this.authAPI.signOut().subscribe(res => {
-      this.isSignIn = false;
-     });
-  }
 
 }

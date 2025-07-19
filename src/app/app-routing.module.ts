@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
 import { HomePage } from './routes/home/home';
@@ -17,6 +17,10 @@ const routes: Routes = [
       {
         path: 'training',
         loadChildren: () => import('./routes/training/training.module').then(m => m.TrainingModule)
+      },
+      {
+        path: 'note/lodash/math',
+        loadComponent: () => import('./routes/note/lodash/math/math.component').then(m => m.MathComponent)
       }
     ]
   },
