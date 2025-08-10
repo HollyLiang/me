@@ -11,6 +11,8 @@ import { NoteTitleComponent } from '../../../title/title.component';
   imports: [MarkdownModule, NoteTitleComponent],
   template: `
     <app-note-title><h2>Add</h2></app-note-title>
+    <p>加法</p>
+
     <div class="d-flex flex-wrap">
       <div class="w50 p-right"><strong>Lodash</strong></div>
       <div class="w50 p-left"><strong>JavaScript</strong></div>
@@ -18,7 +20,7 @@ import { NoteTitleComponent } from '../../../title/title.component';
       <div class="w50 p-left"><markdown [data]="jsCode"></markdown></div>
     </div>
     <div class="link-data">
-      <markdown [data]="linkData"></markdown>
+      <p><markdown [data]="linkData"></markdown></p>
     </div>
   `
 })
@@ -33,29 +35,38 @@ _.add(Infinity, -Infinity); // ${_.add(Infinity, -Infinity)}
 _.add(NaN, NaN); // ${_.add(NaN, NaN)}
 
 _.add(null, undefined); // ${_.add(null, undefined)}
-_.add(undefined, null); // ${_.add(undefined, null)}
+_.add(null, null); // ${_.add(null, null)}
+_.add(undefined, undefined); // ${_.add(undefined, undefined)}
 \`\`\`
 
 source
 \`\`\`js
+// 在 undefined 的情況下，default 會是 0
 var add = createMathOperation(function(augend, addend) {
   return augend + addend;
 }, 0);
 \`\`\`
   `.trim();
 
+  nullValue = null;
+  undefinedValue = undefined;
+
   jsCode = `
 \`\`\`js
 5 + 3; // ${5 + 3}
 NaN + 0; // ${NaN + 0}
-Nan+ Infinity; // ${NaN + Infinity}
+NaN + Infinity; // ${NaN + Infinity}
 Infinity + Infinity; // ${Infinity + Infinity}
 Infinity + -Infinity; // ${Infinity + -Infinity}
 NaN + NaN; // ${NaN + NaN}
+
+null + undefined; // ${this.nullValue + this.undefinedValue}
+null + null; // ${this.nullValue + this.nullValue}
+undefined + undefined; // ${this.undefinedValue + this.undefinedValue}
 \`\`\`
   `.trim();
 
   linkData = `
-> [\`lodash - createMathOperation()\`](https://github.com/lodash/lodash/blob/4.17.15/lodash.js#L5220)
+> [\`lodash - createMathOperation()\`](https://github.com/lodash/lodash/blob/4.17.15/lodash.js#L16192)
   `.trim();
 }

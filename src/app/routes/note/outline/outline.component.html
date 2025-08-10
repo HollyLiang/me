@@ -4,7 +4,8 @@
   </article>
   <section class="outline-content">
     <mat-list>
-      <a *ngFor="let item of outline" mat-list-item (click)="onItemClick(item)">{{ item.innerText }}</a>
+      <a *ngFor="let item of outline" mat-list-item [ngClass]="{'active': item.isActive}" (click)="onItemClick(item)">{{
+        item.text }}</a>
     </mat-list>
   </section>
 </div>

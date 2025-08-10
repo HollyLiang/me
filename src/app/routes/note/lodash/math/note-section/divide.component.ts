@@ -11,6 +11,8 @@ import { NoteTitleComponent } from '../../../title/title.component';
   imports: [MarkdownModule, NoteTitleComponent],
   template: `
     <app-note-title><h2>Divide</h2></app-note-title>
+    <p>除法</p>
+
     <div class="d-flex flex-wrap">
       <div class="w50 p-right"><strong>Lodash</strong></div>
       <div class="w50 p-left"><strong>JavaScript</strong></div>
@@ -28,6 +30,7 @@ export class NoteLodashMathDivideComponent {
 _.divide(6, 3); // ${_.divide(6, 3)}
 _.divide(6, 0); // ${_.divide(6, 0)}
 _.divide(-6, 3); // ${_.divide(-6, 3)}
+_.divide(0, 0); // ${_.divide(0, 0)}
 \`\`\`
 
 source

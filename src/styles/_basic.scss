@@ -1,8 +1,10 @@
-
-
 :root {
   font-size: 10px;
   line-height: 10px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body,
@@ -14,4 +16,8 @@ body {
   margin: 0;
   color: var(--text-color);
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-typography {
+  font: 400 18px / 24px Roboto, sans-serif;
 }

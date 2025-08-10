@@ -4,10 +4,14 @@
     width: 200px;
 
     h2 {
+      margin-top: 2px;
       margin-bottom: 0;
-      padding: 1rem;
-      color: rgb(17, 39, 104);
-      font-size: 2.4rem;
+      padding: .2rem 1rem;
+      background-color: rgb(51, 51, 75);
+      color: rgb(239, 222, 188);
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
     }
 
     h3 {

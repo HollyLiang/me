@@ -1,24 +1,49 @@
 :host {
   ::ng-deep {
+    display: block;
+    height: 100%;
+    overflow: auto;
+
     .notes {
       align-items: flex-start;
 
-      h1 {
-        font-size: 3.2rem;
-        margin-bottom: 16px;
+      article {
+        padding-top: 2rem;
+
+        .note-sections > * {
+          display: block;
+          padding: 1rem 0 3rem;
+        }
       }
-    }
 
-    .outline-content {
-      margin-left: 32px;
-      width: 209px;
-      position: sticky;
-      top: 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      .outline-content {
+        margin-left: 32px;
+        width: 209px;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
 
-      .mdc-list {
-        a.mdc-list-item {
-          font-size: 2rem;
+        .mdc-list {
+          a.mdc-list-item {
+            font-size: 2.2rem;
+            height: 3rem;
+            border-left: 2px solid transparent;
+
+            &.active {
+              background-color: rgb(217, 217, 238);
+              border-color: rgb(140, 140, 238);
+
+              &:hover {
+                background-color: rgb(205, 205, 235);
+              }
+
+              .mdc-list-item__primary-text {
+                color: rgb(57, 57, 129);
+                font-weight: 600;
+              }
+            }
+          }
         }
       }
     }

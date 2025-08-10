@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
 import { NoteTitleComponent } from '../../../title/title.component';
 
 @Component({
-  selector: 'app-note-lodash-math-ceil',
+  selector: 'app-note-lodash-math-floor',
   standalone: true,
   imports: [MarkdownModule, NoteTitleComponent],
   template: `
-    <app-note-title><h2>Ceil</h2></app-note-title>
-    <p>無條件進位</p>
+    <app-note-title><h2>Floor</h2></app-note-title>
+    <p>無條件捨去</p>
 
     <div class="d-flex flex-wrap">
       <div class="w50 p-right"><strong>Lodash</strong></div>
@@ -21,23 +21,25 @@ import { NoteTitleComponent } from '../../../title/title.component';
     </div>
   `
 })
-export class NoteLodashMathCeilComponent {
+export class NoteLodashMathFloorComponent {
   lodashCode = `
 \`\`\`js
-_.ceil(5.1); // ${_.ceil(5.1)}
-_.ceil(5.9); // ${_.ceil(5.9)}
-_.ceil(-5.1); // ${_.ceil(-5.1)}
-
-_.ceil(5.009, 2); // ${_.ceil(5.009, 2)}
-_.ceil(5060, -2); // ${_.ceil(5060, -2)}
+_.floor(6.4); // ${_.floor(6.4)}
+_.floor(-6.4); // ${_.floor(-6.4)}
+_.floor(0.046, 2); // ${_.floor(0.046, 2)}
+_.floor(4060, -2); // ${_.floor(4060, -2)}
 \`\`\`
   `.trim();
 
   jsCode = `
 \`\`\`js
-Math.ceil(5.1); // ${Math.ceil(5.1)}
-Math.ceil(5.9); // ${Math.ceil(5.9)}
-Math.ceil(-5.1); // ${Math.ceil(-5.1)}
+Math.floor(6.4); // ${Math.floor(6.4)}
+Math.floor(-6.4); // ${Math.floor(-6.4)}
+Math.floor(0.046); // ${Math.floor(0.046)}
+
+// 要完成 4060 -> 4000
+Math.floor(4060 / 100) * 100; // ${Math.floor(4060 / 100) * 100}
+
 \`\`\`
   `.trim();
 }
