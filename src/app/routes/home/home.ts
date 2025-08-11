@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.html',
-    styleUrls: ['./home.scss'],
-    standalone: true,
-    imports: [NgFor, RouterLink]
+  selector: 'app-home',
+  templateUrl: './home.html',
+  styleUrls: ['./home.scss'],
+  standalone: true,
+  imports: [NgFor, RouterLink, MatCardModule, MatButtonModule,]
 })
 export class HomePage implements OnInit {
 
@@ -23,6 +25,12 @@ export class HomePage implements OnInit {
       groupName: 'SCSS',
       pages: [
         { subject: 'Font & Color Theme', link: '/research/theme' },
+      ]
+    },
+    {
+      groupName: 'Lodash',
+      pages: [
+        { subject: 'Math', link: '/note/lodash/math' },
       ]
     },
     {
