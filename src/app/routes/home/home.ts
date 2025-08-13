@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [NgFor, RouterLink, MatCardModule, MatButtonModule,]
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   list = [
     {
@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
       pages: [
         { subject: 'Dialog with router-outlet', link: '/research/dialog' },
         { subject: 'OAuth', link: '/research/oauth' },
+        { subject: 'Color Recognizer', link: '/research/color-recognizer' },
       ]
     },
     {
@@ -47,10 +48,5 @@ export class HomePage implements OnInit {
       ]
     }
   ]
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

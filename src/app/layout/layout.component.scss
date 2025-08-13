@@ -1,10 +1,13 @@
 :host {
-  .mat-drawer-side {
-    box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .mat-drawer-container {
+    flex: 1;
   }
 
-  .layout-content {
-    height: calc(100vh - 64px);
-    overflow: auto;
+  .mat-drawer-side {
+    box-shadow: var(--box-shadow);
   }
 }

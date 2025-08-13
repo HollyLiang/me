@@ -18,6 +18,9 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mat-typography {
-  font: 400 18px / 24px Roboto, sans-serif;
+
+ul {
+  &.no-style {
+    list-style: none;
+  }
 }

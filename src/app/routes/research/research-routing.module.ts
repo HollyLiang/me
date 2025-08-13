@@ -1,9 +1,11 @@
-import { DialogComponent } from './dialog/dialog.component';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { ColorRecognizerComponent } from './color-recognizer/color-recognizer.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { OAuthLingLoginComponent } from './oauth/line/login/line-login.component';
 import { OAuthComponent } from './oauth/oauth.component';
 import { ResThemePage } from './theme/theme.page';
-import { RouterModule, Routes } from '@angular/router';
-import { OAuthLingLoginComponent } from './oauth/line/login/line-login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dialog', pathMatch: 'full' },
@@ -21,6 +23,7 @@ const routes: Routes = [
     ]
   },
   { path: 'theme', component: ResThemePage },
+  { path: 'color-recognizer', component: ColorRecognizerComponent }
 ];
 
 @NgModule({

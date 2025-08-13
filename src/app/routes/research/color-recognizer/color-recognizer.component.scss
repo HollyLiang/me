@@ -1,0 +1,12 @@
+:host {
+  ::ng-deep {
+    .color-preview {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #ccc;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+  }
+}
