@@ -21,7 +21,7 @@ import { NoteLodashMathSumComponent } from './note-section/sum.component';
 import { NoteLodashMathSumByComponent } from './note-section/sumby.component';
 import { NoteLodashMathSummaryComponent } from './note-section/summary.componnet';
 
-const noteBlock = [
+const NOTE_BLOCKS = [
   NoteLodashMathSummaryComponent,
   NoteLodashMathAddComponent,
   NoteLodashMathCeilComponent,
@@ -39,19 +39,18 @@ const noteBlock = [
 ]
 
 @Component({
-  selector: 'app-math',
+  selector: 'app-lodash-math',
   standalone: true,
   imports: [
     CommonModule,
-    MarkdownModule,
 
     NoteOutlineComponent,
     NoteTitleComponent,
-    ...noteBlock],
+
+    ...NOTE_BLOCKS],
   templateUrl: './math.component.html',
   styleUrl: './math.component.scss'
 })
 export class MathComponent {
-  sections = noteBlock;
-
+  sections = NOTE_BLOCKS;
 }

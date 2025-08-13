@@ -1,6 +1,4 @@
 <div [ngClass]="{'h2': !this.isHeading1}" [id]="anchorId">
-  <a (click)="onClick()">
-    <ng-content></ng-content>
-    <mat-icon *ngIf="!isHeading1" [inline]="true">link</mat-icon>
-  </a>
+  <ng-content></ng-content>
+  <mat-icon (click)="onClick()" *ngIf="!isHeading1" [inline]="true">link</mat-icon>
 </div>

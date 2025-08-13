@@ -19,9 +19,18 @@ const routes: Routes = [
         loadChildren: () => import('./routes/training/training.module').then(m => m.TrainingModule)
       },
       {
-        path: 'note/lodash/math',
-        loadComponent: () => import('./routes/note/lodash/math/math.component').then(m => m.MathComponent)
-      }
+        path: 'note',
+        children: [
+          {
+            path: 'lodash/math',
+            loadComponent: () => import('./routes/note/lodash/math/math.component').then(m => m.MathComponent)
+          },
+          {
+            path: 'animations',
+            loadComponent: () => import('./routes/note/animations/animations.component').then(m => m.AnimationsComponent)
+          }
+        ]
+      },
     ]
   },
   {

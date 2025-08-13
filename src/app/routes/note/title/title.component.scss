@@ -4,21 +4,25 @@
 
     .h2 {
       margin-bottom: 1rem;
-      padding: 0.5rem 1rem;
+      padding: .5rem 1rem;
       border-radius: 5px;
       color: #333;
       background-color: var(--border-color);
 
-      a {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
 
-        &:hover {
-          h1,
-          h2 {
-            text-decoration: underline;
-          }
+      .mat-icon {
+        margin-left: .5rem;
+        color: #999;
+        font-size: 18px;
+        display: none;
+        cursor: pointer;
+      }
+
+      &:hover {
+        .mat-icon {
+          display: inline;
         }
       }
     }
@@ -34,10 +38,5 @@
       margin-bottom: 0;
     }
 
-    .mat-icon {
-      margin-left: 0.5rem;
-      color: #999;
-      font-size: 18px;
-    }
   }
 }

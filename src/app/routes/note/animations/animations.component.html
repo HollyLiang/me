@@ -1,0 +1,10 @@
+<app-note-outline>
+  <app-note-title>
+    <h1>Animations</h1>
+  </app-note-title>
+  <div class="note-sections">
+    <ng-container *ngFor="let section of sections">
+      <ng-container *ngComponentOutlet="section"></ng-container>
+    </ng-container>
+  </div>
+</app-note-outline>

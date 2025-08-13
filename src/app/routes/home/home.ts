@@ -28,6 +28,12 @@ export class HomePage implements OnInit {
       ]
     },
     {
+      groupName: 'Angular Animations',
+      pages: [
+        { subject: 'Animations', link: '/note/animations' },
+      ]
+    },
+    {
       groupName: 'Lodash',
       pages: [
         { subject: 'Math', link: '/note/lodash/math' },
