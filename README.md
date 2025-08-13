@@ -8,6 +8,6 @@ Run `npm start` for a dev server. Auto startup browser and navigate to `http://l
 
 ## Publish
 
-Run `npm deploy` for build product version. And auto publish to GitHub.
+Run `npm run deploy` for build product version. And auto publish to GitHub.
 
 See [GitHub Pages](https://hollyliang.github.io/me/)
