@@ -18,7 +18,7 @@ export class ColorRecognizerComponent {
   selectedFile?: File;
   selectedColor: string | null = null;
   selectedRgb?: { r: number; g: number; b: number; a: number };
-  nearestBaseColor?: { name: string; hex: string };
+  nearestColorName?: string;
 
   private objectUrl?: string;
   private canvas?: HTMLCanvasElement;
@@ -26,28 +26,7 @@ export class ColorRecognizerComponent {
   private naturalWidth = 0;
   private naturalHeight = 0;
 
-  private readonly baseColors = [
-    { name: '黑色', hex: '#000000', r: 0, g: 0, b: 0 },
-    { name: '深灰色', hex: '#333333', r: 51, g: 51, b: 51 },
-    { name: '灰色', hex: '#808080', r: 128, g: 128, b: 128 },
-    { name: '淺灰色', hex: '#D3D3D3', r: 211, g: 211, b: 211 },
-    { name: '白色', hex: '#FFFFFF', r: 255, g: 255, b: 255 },
-    { name: '紅色', hex: '#FF0000', r: 255, g: 0, b: 0 },
-    { name: '綠色', hex: '#008000', r: 0, g: 128, b: 0 },
-    { name: '藍色', hex: '#0000FF', r: 0, g: 0, b: 255 },
-    { name: '黃色', hex: '#FFFF00', r: 255, g: 255, b: 0 },
-    { name: '青色', hex: '#00FFFF', r: 0, g: 255, b: 255 },
-    { name: '洋紫色', hex: '#FF00FF', r: 255, g: 0, b: 255 },
-    { name: '淺橘色', hex: '#e8b470ff', r: 255, g: 165, b: 112 },
-    { name: '橘色', hex: '#FFA500', r: 255, g: 165, b: 0 },
-    { name: '紫色', hex: '#800080', r: 128, g: 0, b: 128 },
-    { name: '紫色', hex: '#7e437e', r: 126, g: 67, b: 126 },
-    { name: '棕色', hex: '#8B4513', r: 139, g: 69, b: 19 },
-    { name: '粉紅色', hex: '#FFC0CB', r: 255, g: 192, b: 203 },
-    { name: '萊姆綠', hex: '#00FF00', r: 0, g: 255, b: 0 },
-    { name: '海軍藍', hex: '#000080', r: 0, g: 0, b: 128 },
-    { name: '藍綠色', hex: '#008080', r: 0, g: 128, b: 128 }
-  ];
+  log: string;
 
   setPreviewSrc(file: File): void {
     if (this.objectUrl) URL.revokeObjectURL(this.objectUrl);
@@ -88,23 +67,73 @@ export class ColorRecognizerComponent {
     const [r, g, b, a] = data;
     this.selectedRgb = { r, g, b, a };
     this.selectedColor = this.rgbToHex(r, g, b);
-    this.nearestBaseColor = this.findNearestBaseColor(r, g, b);
+    this.nearestColorName = this.findNearestColor(r, g, b);
   }
 
-  private findNearestBaseColor(r: number, g: number, b: number): { name: string; hex: string } {
-    let min = Number.POSITIVE_INFINITY;
-    let nearest = this.baseColors[0];
-    for (const c of this.baseColors) {
-      const dr = r - c.r;
-      const dg = g - c.g;
-      const db = b - c.b;
-      const dist = dr * dr + dg * dg + db * db; // 省略開根號
-      if (dist < min) {
-        min = dist;
-        nearest = c;
-      }
+  private findNearestColor(r: number, g: number, b: number): string {
+    const hsv = this.rgbToHsv(r, g, b);
+    const { h, s, v } = hsv;
+    this.log = `色相: ${h} / 飽和度: ${s} / 明度: ${v}`;
+
+    let prefix = '';
+    if (v < 0.4) prefix = '深';
+    else if (s < 0.4 && v > 0.8) prefix = '淺';
+    let color = '';
+
+    if (v < 0.1) return '黑色';
+    if (s < 0.1) {
+      if (v > 0.9) return '白色';
+      color = '灰色';
     }
-    return { name: nearest.name, hex: nearest.hex };
+    else if (h < 10 || h > 340) color = '紅色';
+    else if (h < 45) {
+      if (prefix === '深') return '棕色';
+      color = '橘色';
+    }
+    else if (h < 70) color = '黃色';
+    else if (h < 145) color = '綠色';
+    else if (h < 180) color = '藍綠色';
+    else if (h < 210) color = '水藍色';
+    else if (h < 270) color = '藍色';
+    else if (h < 300) color = '紫色';
+    else {
+      if (prefix === '深') return '桃紅色';
+      else if (prefix === '淺') return '粉紅色';
+      color = '紫紅色';
+    }
+    return prefix + color;
+  }
+
+  private rgbToHsv(r: number, g: number, b: number): { h: number; s: number; v: number } {
+    const rn = r / 255;
+    const gn = g / 255;
+    const bn = b / 255;
+
+    const max = Math.max(rn, gn, bn);
+    const min = Math.min(rn, gn, bn);
+    const delta = max - min;
+
+    // Hue
+    let h: number;
+    if (delta === 0) {
+      h = 0;
+    } else if (max === rn) {
+      h = 60 * (((gn - bn) / delta) % 6);
+    } else if (max === gn) {
+      h = 60 * ((bn - rn) / delta + 2);
+    } else {
+      h = 60 * ((rn - gn) / delta + 4);
+    }
+    if (h < 0) h += 360;
+
+    // Saturation
+    const s = max === 0 ? 0 : delta / max;
+
+    // Value
+    const v = max;
+
+    // 回傳：h 0-360, s / v 0-1
+    return { h, s, v };
   }
 
   private rgbToHex(r: number, g: number, b: number): string {
@@ -120,7 +149,7 @@ export class ColorRecognizerComponent {
     this.ctx = null;
     this.selectedColor = null;
     this.selectedRgb = undefined;
-    this.nearestBaseColor = undefined;
+    this.nearestColorName = undefined;
     this.naturalWidth = this.naturalHeight = 0;
   }
 }
