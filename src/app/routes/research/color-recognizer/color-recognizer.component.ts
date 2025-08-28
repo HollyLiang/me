@@ -91,8 +91,9 @@ export class ColorRecognizerComponent {
       color = '橘色';
     }
     else if (h < 70) color = '黃色';
-    else if (h < 145) color = '綠色';
-    else if (h < 180) color = '藍綠色';
+    else if (h < 100) color = '黃綠色';
+    else if (h < 130) color = '綠色';
+    else if (h < 175) color = '藍綠色';
     else if (h < 210) color = '水藍色';
     else if (h < 270) color = '藍色';
     else if (h < 300) color = '紫色';
