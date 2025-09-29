@@ -12,7 +12,6 @@ import { RouterLink } from '@angular/router';
   imports: [NgFor, RouterLink, MatCardModule, MatButtonModule,]
 })
 export class HomePage {
-
   list = [
     {
       groupName: 'Features',

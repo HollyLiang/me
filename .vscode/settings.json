@@ -15,5 +15,11 @@
       "titleBar.inactiveBackground": "#333333",
       "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#31719c"
+  "peacock.color": "#31719c",
+  "angular-schematics.schematicsDefaultOptions": {
+    "angular-*": {
+      "style": "scss",
+      "externalTemplate": true
+    }
+  }
 }

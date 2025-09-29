@@ -1,0 +1,27 @@
+<div class="profile container text-center">
+  <div class="profile-photo">
+    <div *ngIf="photoURL; else noPhoto" class="photo-circle">
+      <img [src]="photoURL" alt="Profile Photo">
+    </div>
+    <ng-template #noPhoto>
+      <div class="photo-circle no-photo">
+        <span>{{ profileForm.get('displayName')?.value?.charAt(0) || '?' }}</span>
+      </div>
+    </ng-template>
+  </div>
+  <div class="profile-info">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [value]="email" readonly>
+    </mat-form-field>
+    <form [formGroup]="profileForm" (ngSubmit)="onSave()">
+      <mat-form-field appearance="fill">
+        <mat-label>Display Name</mat-label>
+        <input matInput formControlName="displayName">
+      </mat-form-field>
+      <section>
+        <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid">Save</button>
+      </section>
+    </form>
+  </div>
+</div>

@@ -2,10 +2,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
+import { routes as authRoutes } from './routes/auth/auth-routing';
 import { HomePage } from './routes/home/home';
+import { authGuardGuard } from './shared/guard/auth-guard.guard';
+
+const noteRoutes: Routes = [
+  {
+    path: 'lodash/math',
+    loadComponent: () => import('./routes/note/lodash/math/math.component').then(m => m.MathComponent)
+  },
+  {
+    path: 'animations',
+    loadComponent: () => import('./routes/note/animations/animations.component').then(m => m.AnimationsComponent)
+  }
+];
 
 const routes: Routes = [
-  { path: 'auth', loadChildren: () => import('./routes/auth/auth.module').then(m => m.AuthModule) },
+  { path: 'auth', children: authRoutes },
   {
     path: '', component: LayoutComponent,
     children: [
@@ -20,16 +33,25 @@ const routes: Routes = [
       },
       {
         path: 'note',
+        children: noteRoutes
+      },
+      {
+        path: 'profile',
+        loadComponent: () => import('./routes/profile/profile.component').then(m => m.ProfileComponent),
+        canActivate: [authGuardGuard]
+      },
+      {
+        path: 'status',
         children: [
           {
-            path: 'lodash/math',
-            loadComponent: () => import('./routes/note/lodash/math/math.component').then(m => m.MathComponent)
-          },
-          {
-            path: 'animations',
-            loadComponent: () => import('./routes/note/animations/animations.component').then(m => m.AnimationsComponent)
+            path: '401',
+            loadComponent: () => import('./routes/status/401/401.component').then(m => m.Status401Component)
           }
         ]
+      },
+      {
+        path: '401',
+        loadComponent: () => import('./routes/status/401/401.component').then(m => m.Status401Component)
       },
     ]
   },

@@ -1,10 +1,10 @@
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Auth, onAuthStateChanged, signOut } from '@angular/fire/auth';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink } from '@angular/router';
-import { AuthApiService } from '@api/auth/auth.service';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '@hy/core';
 
 @Component({
@@ -15,17 +15,44 @@ import { UserService } from '@hy/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  @Output() menuClick = new EventEmitter<void>();
-
-  private authAPI = inject(AuthApiService);
+  private router = inject(Router);
+  private auth = inject(Auth);
   private userService = inject(UserService);
 
-  isSignIn: boolean = this.userService.accessToken && true;
-  userInfo = this.userService.userInfo;
+  @Output() menuClick = new EventEmitter<void>();
+
+  isSignIn: boolean = false;
+  userName: string;
+  userPhotoUrl: string;
+
+  constructor() {
+    this.updateUserInfo();
+
+    // 訂閱 userInfoChanges 以更新使用者資訊
+    this.userService.userInfoChanges.subscribe(() => {
+      this.updateUserInfo()
+    });
+
+    // 使用 onAuthStateChanged 更新 userInfo
+    onAuthStateChanged(this.auth, () => {
+      this.updateUserInfo()
+    });
+  }
+
+  private updateUserInfo() {
+    const user = this.auth.currentUser;
+    this.isSignIn = !!user;
+    this.userName = user?.displayName || 'Unknown User';
+    this.userPhotoUrl = user?.photoURL;
+  }
 
   onSignOutClick() {
-    this.authAPI.signOut().subscribe(() => {
-      this.isSignIn = false;
+    signOut(this.auth).then(() => {
+      this.userService.userInfo = null;
+      this.updateUserInfo();
+      this.router.navigate(['/']);
+    }).catch(err => {
+      console.error('Sign out failed', err);
     });
   }
 }

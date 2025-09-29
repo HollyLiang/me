@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
+
+import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { UserService } from '../storage';
 
 @Injectable()
@@ -15,19 +17,19 @@ export class DefaultInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const url = req.url;
-    const isCallAPI = this._isCallAPI(url);
+    // const isCallAPI = this._isCallAPI(url);
 
-    if (isCallAPI) {
-      const update: any = {};
-      if (url && url.startsWith('~/')) {
-        update.url = url.replace('~/', '');
-      }
-      const token = this.userService.accessToken;
-      if (token) {
-        update.headers = { 'access-token': token };
-      }
-      req = req.clone(update);
-    }
+    // if (isCallAPI) {
+    //   const update: any = {};
+    //   if (url && url.startsWith('~/')) {
+    //     update.url = url.replace('~/', '');
+    //   }
+    //   const token = this.userService.accessToken;
+    //   if (token) {
+    //     update.headers = { 'access-token': token };
+    //   }
+    //   req = req.clone(update);
+    // }
 
     return next.handle(req).pipe(
       mergeMap(event => {
