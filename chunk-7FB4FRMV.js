@@ -1,0 +1,1 @@
+var e={serverUrl:"http://localhost:5031/",production:!0,firebase:{apiKey:"AIzaSyAE42vRrzd8H8_K5hW0h5sTQLwgulJbXXQ",authDomain:"githubdemo-ab3eb.firebaseapp.com",projectId:"githubdemo-ab3eb",storageBucket:"githubdemo-ab3eb.firebasestorage.app",messagingSenderId:"743348364333",appId:"1:743348364333:web:c066583b5db9d05911c4a4"}};export{e as a};
