@@ -1,6 +1,8 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+
+import { ColorService } from './color.service';
 
 @Component({
   selector: 'app-color-recognizer',
@@ -26,25 +28,44 @@ export class ColorRecognizerComponent {
   private naturalWidth = 0;
   private naturalHeight = 0;
 
+  private displayCanvas?: HTMLCanvasElement;
+  private displayCtx?: CanvasRenderingContext2D | null;
+
   log: string;
+
+  private colorService = inject(ColorService);
 
   setPreviewSrc(file: File): void {
     if (this.objectUrl) URL.revokeObjectURL(this.objectUrl);
     this.objectUrl = URL.createObjectURL(file);
-    this.previewSrc = this.objectUrl;
 
     const img = new Image();
     img.onload = () => {
       this.naturalWidth = img.naturalWidth;
       this.naturalHeight = img.naturalHeight;
+
+      // 原始 canvas 用於取色
       const canvas = document.createElement('canvas');
       canvas.width = this.naturalWidth;
       canvas.height = this.naturalHeight;
       const ctx = canvas.getContext('2d');
-      if (ctx) {
+
+      // 顯示 canvas 用於畫圓圈
+      const displayCanvas = document.createElement('canvas');
+      displayCanvas.width = this.naturalWidth;
+      displayCanvas.height = this.naturalHeight;
+      const displayCtx = displayCanvas.getContext('2d');
+
+      if (ctx && displayCtx) {
         ctx.drawImage(img, 0, 0);
+        displayCtx.drawImage(img, 0, 0);
         this.canvas = canvas;
         this.ctx = ctx;
+        this.displayCanvas = displayCanvas;
+        this.displayCtx = displayCtx;
+
+        // 更新預覽圖片源為顯示 canvas
+        this.previewSrc = displayCanvas.toDataURL();
       }
     };
     img.src = this.objectUrl;
@@ -58,87 +79,37 @@ export class ColorRecognizerComponent {
   }
 
   onImageClick(event: MouseEvent): void {
-    if (!this.ctx || !this.canvas || !this.previewSrc) return;
+    if (!this.ctx || !this.canvas || !this.displayCtx || !this.displayCanvas) return;
     const imgEl = event.target as HTMLImageElement;
     const x = Math.floor((event.offsetX / imgEl.clientWidth) * this.naturalWidth);
     const y = Math.floor((event.offsetY / imgEl.clientHeight) * this.naturalHeight);
     if (x < 0 || y < 0 || x >= this.naturalWidth || y >= this.naturalHeight) return;
+
     const data = this.ctx.getImageData(x, y, 1, 1).data;
     const [r, g, b, a] = data;
     this.selectedRgb = { r, g, b, a };
-    this.selectedColor = this.rgbToHex(r, g, b);
-    this.nearestColorName = this.findNearestColor(r, g, b);
-  }
+    this.selectedColor = this.colorService.rgbToHex(r, g, b);
+    const result = this.colorService.findNearestColor(r, g, b);
+    this.nearestColorName = result.colorName;
+    this.log = result.log;
 
-  private findNearestColor(r: number, g: number, b: number): string {
-    const hsv = this.rgbToHsv(r, g, b);
-    const { h, s, v } = hsv;
-    this.log = `色相: ${h} / 飽和度: ${s} / 明度: ${v}`;
+    // 重新繪製原圖（清除之前的圓圈）
+    this.displayCtx.clearRect(0, 0, this.displayCanvas.width, this.displayCanvas.height);
+    this.displayCtx.drawImage(this.canvas, 0, 0);
 
-    let prefix = '';
-    if (v < 0.4) prefix = '深';
-    else if (s < 0.4 && v > 0.8) prefix = '淺';
-    let color = '';
+    // 計算高對比色
+    const brightness = (r * 0.299 + g * 0.587 + b * 0.114) / 255;
+    const circleColor = brightness > 0.5 ? '#000000' : '#FFFFFF';
 
-    if (v < 0.1) return '黑色';
-    if (s < 0.1) {
-      if (v > 0.9) return '白色';
-      color = '灰色';
-    }
-    else if (h < 10 || h > 340) color = '紅色';
-    else if (h < 45) {
-      if (prefix === '深') return '棕色';
-      color = '橘色';
-    }
-    else if (h < 70) color = '黃色';
-    else if (h < 100) color = '黃綠色';
-    else if (h < 130) color = '綠色';
-    else if (h < 175) color = '藍綠色';
-    else if (h < 210) color = '水藍色';
-    else if (h < 270) color = '藍色';
-    else if (h < 300) color = '紫色';
-    else {
-      if (prefix === '深') return '桃紅色';
-      else if (prefix === '淺') return '粉紅色';
-      color = '紫紅色';
-    }
-    return prefix + color;
-  }
+    // 畫圓圈標示選中點
+    this.displayCtx.strokeStyle = circleColor;
+    this.displayCtx.lineWidth = Math.max(3, Math.min(this.naturalWidth, this.naturalHeight) / 200);
+    this.displayCtx.beginPath();
+    this.displayCtx.arc(x, y, Math.max(10, Math.min(this.naturalWidth, this.naturalHeight) / 50), 0, 2 * Math.PI);
+    this.displayCtx.stroke();
 
-  private rgbToHsv(r: number, g: number, b: number): { h: number; s: number; v: number } {
-    const rn = r / 255;
-    const gn = g / 255;
-    const bn = b / 255;
-
-    const max = Math.max(rn, gn, bn);
-    const min = Math.min(rn, gn, bn);
-    const delta = max - min;
-
-    // Hue
-    let h: number;
-    if (delta === 0) {
-      h = 0;
-    } else if (max === rn) {
-      h = 60 * (((gn - bn) / delta) % 6);
-    } else if (max === gn) {
-      h = 60 * ((bn - rn) / delta + 2);
-    } else {
-      h = 60 * ((rn - gn) / delta + 4);
-    }
-    if (h < 0) h += 360;
-
-    // Saturation
-    const s = max === 0 ? 0 : delta / max;
-
-    // Value
-    const v = max;
-
-    // 回傳：h 0-360, s / v 0-1
-    return { h, s, v };
-  }
-
-  private rgbToHex(r: number, g: number, b: number): string {
-    return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
+    // 更新預覽圖片
+    this.previewSrc = this.displayCanvas.toDataURL();
   }
 
   clearSelection(): void {
@@ -152,5 +123,7 @@ export class ColorRecognizerComponent {
     this.selectedRgb = undefined;
     this.nearestColorName = undefined;
     this.naturalWidth = this.naturalHeight = 0;
+    this.displayCanvas = undefined;
+    this.displayCtx = null;
   }
 }

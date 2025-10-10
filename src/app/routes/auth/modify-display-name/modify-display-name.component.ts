@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { UserService } from '@hy/core';
 
 @Component({
-  selector: 'app-modify-profile',
+  selector: 'app-modify-display-name',
   standalone: true,
   imports: [ReactiveFormsModule, NgIf, MatFormFieldModule, MatInputModule, MatButton],
   template: `

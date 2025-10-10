@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  gap: 16px;
+}
+
+.manage-container {
+  display: flex;
+  width: 100%;
+}
+
+.category-section {
+  width: 30%;
+  border-right: 1px solid #ccc;
+  padding-right: 16px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 8px;
+      cursor: pointer;
+
+      &.selected {
+        background-color: #f0f0f0;
+        font-weight: bold;
+      }
+
+      button {
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+.text-section {
+  width: 70%;
+  padding-left: 16px;
+}

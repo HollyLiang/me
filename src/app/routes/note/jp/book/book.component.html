@@ -1,0 +1,29 @@
+<ng-container *ngIf="books()?.length > 0">
+  <app-note-outline>
+    <app-note-title>
+      <h1>JP Books</h1>
+    </app-note-title>
+    <div class="note-sections">
+      <ng-container *ngFor="let book of books()">
+        <app-note-title>
+          <h2>{{ book.name }}</h2>
+        </app-note-title>
+        <div class="translate-list">
+          <ul>
+            <li *ngFor="let text of book.texts">
+              <div class="original-text">{{ text.text }}</div>
+              <div class="translated-text d-flex align-items-center">
+                <span>
+                  {{ text.translate || 'No Translation' }}
+                </span>
+                <button mat-icon-button color="primary" *ngIf="text.translate" (click)="speak(text.translate)">
+                  <mat-icon>volume_up</mat-icon>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </div>
+  </app-note-outline>
+</ng-container>

@@ -3,7 +3,7 @@ import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import type { CanActivateFn } from '@angular/router';
 
-export const authGuardGuard: CanActivateFn = () => {
+export const authGuard: CanActivateFn = () => {
   const auth = inject(Auth);
   const router = inject(Router);
 

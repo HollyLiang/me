@@ -1,0 +1,31 @@
+:host {
+  display: block;
+
+  .note-sections {
+    app-note-title {
+      padding-bottom: 0;
+    }
+
+    .translate-list {
+      padding-bottom: 8px;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 8px;
+
+        li {
+          border-left: 3px solid #ccc;
+          padding-left: 16px;
+          border-radius: 5px;
+          margin-bottom: 4px;
+
+          .original-text {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+}
